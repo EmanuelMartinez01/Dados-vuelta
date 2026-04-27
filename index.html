@@ -13,6 +13,15 @@
 
 <style>
 body { background:#121414; color:#e2e2e2; font-family: Inter; }
+
+@keyframes marquee {
+0% { transform: translateX(0); }
+100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+display: inline-block;
+animation: marquee 20s linear infinite;
+}
 </style>
 </head>
 
@@ -53,6 +62,45 @@ body { background:#121414; color:#e2e2e2; font-family: Inter; }
 
 <audio id="radioPlayer" src="https://example-stream-url.com/stream"></audio>
 
+</section>
+
+<!-- TICKER -->
+<div class="bg-[#C1121F] py-2 overflow-hidden whitespace-nowrap border-y-2 border-white">
+<div class="animate-marquee font-bold text-white">
+ROCK • CULTURA • CHUBUT • RADIO • DADOS VUELTA • ROCK • CULTURA • CHUBUT • RADIO • DADOS VUELTA •
+</div>
+</div>
+
+<!-- ABOUT -->
+<section class="p-8 bg-black text-center">
+<h2 class="text-3xl font-bold mb-4">SONIDO PROPIO DESDE EL SUR</h2>
+<p class="max-w-xl mx-auto">
+Programa de radio streaming enfocado en el rock nacional, la cultura y la identidad regional de Chubut.
+</p>
+</section>
+
+<!-- PROGRAMACIÓN -->
+<section class="p-8">
+<h2 class="text-3xl text-center mb-6 font-bold">PROGRAMACIÓN</h2>
+
+<div class="grid md:grid-cols-3 gap-4">
+
+<div class="border p-4">
+<p>10:00 - 12:00</p>
+<h3 class="font-bold">DESPERTAR REBELDE</h3>
+</div>
+
+<div class="border p-4 bg-white text-black">
+<p>20:00 - 22:00</p>
+<h3 class="font-bold">DADOS VUELTA</h3>
+</div>
+
+<div class="border p-4">
+<p>21:00 - 23:00</p>
+<h3 class="font-bold">CULTURA BEAT</h3>
+</div>
+
+</div>
 </section>
 
 <!-- CONTACTO -->
