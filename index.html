@@ -1,190 +1,340 @@
 <!DOCTYPE html>
-<html class="dark" lang="es">
-<head>
+
+<html class="dark" lang="es"><head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-<script src="https://cdn.tailwindcss.com"></script>
-
-<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@700;800;900&family=Inter:wght@400;700&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
-
-<title>Dados Vuelta</title>
-
-<style>
-body { background:#121414; color:#e2e2e2; font-family: Inter; }
-
-@keyframes marquee {
-0% { transform: translateX(0); }
-100% { transform: translateX(-50%); }
-}
-.animate-marquee {
-display: inline-block;
-animation: marquee 20s linear infinite;
-}
-</style>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@700;800;900&amp;family=Inter:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#5c403d",
+                        "surface-container": "#1e2020",
+                        "on-primary": "#680009",
+                        "primary-fixed": "#ffdad6",
+                        "primary-container": "#c1121f",
+                        "secondary-fixed": "#e5e2e1",
+                        "tertiary": "#bfc8d0",
+                        "tertiary-fixed-dim": "#bfc8d0",
+                        "surface-bright": "#37393a",
+                        "surface-container-lowest": "#0c0f0f",
+                        "surface-container-high": "#282a2b",
+                        "surface-dim": "#121414",
+                        "tertiary-fixed": "#dbe4ed",
+                        "on-secondary-fixed-variant": "#474646",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "primary-fixed-dim": "#ffb3ad",
+                        "primary": "#ffb3ad",
+                        "surface-container-highest": "#333535",
+                        "on-primary-fixed": "#410003",
+                        "on-surface": "#e2e2e2",
+                        "on-secondary-container": "#bab8b7",
+                        "inverse-surface": "#e2e2e2",
+                        "inverse-primary": "#bd0d1d",
+                        "on-tertiary": "#293138",
+                        "error-container": "#93000a",
+                        "background": "#121414",
+                        "secondary-fixed-dim": "#c9c6c5",
+                        "surface-variant": "#333535",
+                        "surface-container-low": "#1a1c1c",
+                        "secondary": "#c9c6c5",
+                        "on-tertiary-fixed": "#141d23",
+                        "on-tertiary-container": "#d5dee7",
+                        "outline": "#ac8885",
+                        "on-surface-variant": "#e5bdb9",
+                        "inverse-on-surface": "#2f3131",
+                        "on-secondary": "#313030",
+                        "secondary-container": "#4a4949",
+                        "on-primary-container": "#ffd2ce",
+                        "tertiary-container": "#59626a",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#930011",
+                        "on-background": "#e2e2e2",
+                        "surface": "#121414",
+                        "on-tertiary-fixed-variant": "#3f484f",
+                        "surface-tint": "#ffb3ad",
+                        "on-error": "#690005"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "48px",
+                        "stack-md": "24px",
+                        "unit": "8px",
+                        "gutter": "16px",
+                        "stack-sm": "8px",
+                        "container-margin": "24px"
+                    },
+                    "fontFamily": {
+                        "display-xl": ["Epilogue"],
+                        "headline-lg": ["Epilogue"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-md": ["Epilogue"]
+                    },
+                    "fontSize": {
+                        "display-xl": ["80px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>.noise-overlay {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBIXyJSsFSU8tOjHcQJxQDp4EZIIbJdzeLVMQQdbFxPolySS3hbYuIKzWrj2caX4gMf-1CxbaBPz8jRQRi0eojV1_CDaMHWsFyA8r4TzqdPqpAKnnvMNZ7Z5Eozu8_h4h3_hyR4VxFlf-WANJwExOQ5gkxZjrAe8pl0d7xtaTh8CUZMVGOXMUY7mox8-y6W-P3RECcVUENEumHHhhjGjvqiSTFf8zB6LFyHoeGsPcVymY-yQ5yoROQf9rZRSBtnKoYTupxYLoTdusXA);
+    pointer-events: none
+    }
+.grunge-bg {
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(image-hero-texture);
+    background-size: cover;
+    background-blend-mode: multiply
+    }
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px
+    }</style>
 </head>
-
-<body class="overflow-x-hidden">
-
-<!-- HEADER -->
-<header class="bg-black border-b-2 border-white flex justify-between items-center px-6 py-4">
-<div class="text-2xl font-black italic text-[#C1121F] uppercase">DADOS VUELTA</div>
-<button id="navPlay" class="bg-[#C1121F] px-4 py-2 text-white font-bold">EN VIVO</button>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<div class="fixed inset-0 noise-overlay opacity-20 z-[9999]"></div>
+<!-- TopAppBar -->
+<header class="bg-black dark:bg-[#0D0D0D] docked full-width top-0 border-b-2 border-white flex justify-between items-center w-full px-6 py-4 max-w-full mx-auto z-50">
+<div class="text-2xl font-black italic text-[#C1121F] tracking-widest font-['Epilogue'] uppercase">DADOS VUELTA</div>
+<nav class="hidden md:flex gap-gutter items-center">
+<a class="font-['Epilogue'] font-black uppercase tracking-tighter text-[#C1121F] border-b-4 border-[#C1121F] pb-1" href="#">Home</a>
+<a class="font-['Epilogue'] font-black uppercase tracking-tighter text-white hover:text-[#C1121F] transition-colors" href="#">En Vivo</a>
+<a class="font-['Epilogue'] font-black uppercase tracking-tighter text-white hover:text-[#C1121F] transition-colors" href="#">Programación</a>
+<a class="font-['Epilogue'] font-black uppercase tracking-tighter text-white hover:text-[#C1121F] transition-colors" href="#">Nosotros</a>
+<a class="font-['Epilogue'] font-black uppercase tracking-tighter text-white hover:text-[#C1121F] transition-colors" href="#">Contacto</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden md:block bg-[#C1121F] text-white font-['Epilogue'] font-black uppercase tracking-tighter px-6 py-2 hover:bg-white hover:text-black transition-all duration-100 active:translate-y-0.5">
+                ESCUCHAR EN VIVO
+            </button>
+<span class="material-symbols-outlined text-[#C1121F] cursor-pointer" data-icon="sensors">sensors</span>
+</div>
 </header>
-
-<!-- HERO -->
-<section class="min-h-screen flex flex-col justify-center items-center text-center px-6">
-
-<h1 class="text-6xl font-black mb-4">DADOS VUELTA</h1>
-<p class="text-xl mb-6">Cultura, Rock y Voz Propia</p>
-
-<!-- PLAYER -->
-<div class="bg-black border-2 border-white p-6 flex gap-6 items-center w-full max-w-xl">
-
-<button id="playBtn" class="w-20 h-20 bg-[#C1121F] flex items-center justify-center">
-<span id="playIcon" class="material-symbols-outlined text-4xl text-white">play_arrow</span>
+<main class="min-h-screen">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex flex-col justify-center items-center text-center px-container-margin grunge-bg overflow-hidden border-b-2 border-white">
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+<div class="relative z-10 max-w-5xl">
+<h1 class="font-display-xl text-display-xl text-white mb-4 uppercase drop-shadow-[4px_4px_0px_#C1121F]">DADOS VUELTA</h1>
+<p class="font-headline-md text-headline-md text-white mb-stack-md italic tracking-widest">Cultura, Rock y Voz Propia</p>
+<!-- Integrated Player -->
+<div class="bg-[#0D0D0D] border-2 border-white p-stack-md inline-flex flex-col md:flex-row items-center gap-stack-md w-full max-w-2xl">
+<button class="w-20 h-20 bg-[#C1121F] flex items-center justify-center hover:bg-white group transition-all">
+<span class="material-symbols-outlined text-4xl text-white group-hover:text-black" data-icon="play_arrow" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
 </button>
-
-<div class="flex-1 text-left">
-
-<div class="flex items-center gap-2">
-<span id="liveDot" class="w-2 h-2 bg-gray-500"></span>
-<span id="liveStatus" class="text-gray-400 uppercase text-xs">Offline</span>
+<div class="text-left flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="w-2 h-2 bg-[#C1121F] animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-[#C1121F] uppercase">En Vivo Ahora</span>
 </div>
-
-<h2 class="font-bold">Dados Vuelta - Streaming</h2>
-
-<input id="volumeControl" type="range" min="0" max="1" step="0.01" value="1" class="w-full mt-2">
-
+<h2 class="font-headline-md text-headline-md text-white uppercase leading-none">Dados Vuelta - Tarde de Rock</h2>
+<p class="font-body-md text-secondary mt-1">Chubut, Argentina / 94.5 MHz</p>
 </div>
 </div>
-
-<audio id="radioPlayer" src="https://example-stream-url.com/stream"></audio>
-
+</div>
+<img class="absolute -bottom-24 -right-24 w-96 opacity-10 rotate-12" data-alt="high contrast halftone graphic of a vintage vinyl record player with spray paint textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBg-qBNL-mrRdKRok87adyescnu3zqsLFG3qGlW-Pv-7oqSOeicTYcyol1m1A1xE3pFPRGg6UTswveICDz5QPAVtRNPwdnOxFp2-WQbivHKFkJ67xYyXWSv0r6tmV1Tgs61ZxrLpF6XBGeUNoLPkY4ZIZwTuczpC_NBncbPWhcUitunot6Hdy_yhpwcLBuC7NIO9ecFJ5PRaI4JJc-2fbF7dBnRrVmwemlSBysOuW08z4Zukmx_AUe-ih1oUrQeQAP4YzbbLWCWC38F"/>
 </section>
-
-<!-- TICKER -->
-<div class="bg-[#C1121F] py-2 overflow-hidden whitespace-nowrap border-y-2 border-white">
-<div class="animate-marquee font-bold text-white">
-ROCK • CULTURA • CHUBUT • RADIO • DADOS VUELTA • ROCK • CULTURA • CHUBUT • RADIO • DADOS VUELTA •
+<!-- Live Status / Ticker -->
+<div class="bg-[#C1121F] py-2 overflow-hidden whitespace-nowrap border-b-2 border-white">
+<div class="inline-block animate-marquee font-['Epilogue'] font-black uppercase text-white tracking-[0.2em] text-sm">
+                ROCK NACIONAL • CULTURA CHUBUTENSE • VOZ PROPIA • ESCUCHÁ EN VIVO • DADOS VUELTA RADIO • GARAGE TO GALLERY • 
+                ROCK NACIONAL • CULTURA CHUBUTENSE • VOZ PROPIA • ESCUCHÁ EN VIVO • DADOS VUELTA RADIO • GARAGE TO GALLERY • 
+            </div>
 </div>
+<!-- About Section -->
+<section class="py-stack-lg px-container-margin grid md:grid-cols-2 gap-stack-lg items-center border-b-2 border-white bg-[#0D0D0D]">
+<div class="relative group">
+<div class="absolute -inset-2 border-2 border-[#C1121F] group-hover:inset-0 transition-all"></div>
+<img class="relative z-10 grayscale hover:grayscale-0 transition-all duration-500 w-full aspect-square object-cover" data-alt="black and white cinematic close-up of an electric guitar leaning against a brick wall in a dim studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_NWQ2ii4vBeHdatc7iEdB7bUm5kbfB0wceFZ8bcKQB6UZ9dgKW3WIySHRM35Ne7Rkby2XzfuMux5-RqN27G0-jwmyMs-d-BNKpMjvNA0Wt_gZFASomHpvPb3dY31fEy4U1lIS_SrfbxnYrXm41X6qk0H8wt_-GFCNbQLlEg-ZsQwg4B5Nk9eIZ9BnVe_z_wwB_VqzuYdBo8LWYr78RJMi12GtRo6YToiDUeChrPFI-te9s0zFgS2onmNhlfIMKyV3_m8Lmywkz069"/>
 </div>
-
-<!-- ABOUT -->
-<section class="p-8 bg-black text-center">
-<h2 class="text-3xl font-bold mb-4">SONIDO PROPIO DESDE EL SUR</h2>
-<p class="max-w-xl mx-auto">
-Programa de radio streaming enfocado en el rock nacional, la cultura y la identidad regional de Chubut.
-</p>
-</section>
-
-<!-- PROGRAMACIÓN -->
-<section class="p-8">
-<h2 class="text-3xl text-center mb-6 font-bold">PROGRAMACIÓN</h2>
-
-<div class="grid md:grid-cols-3 gap-4">
-
-<div class="border p-4">
-<p>10:00 - 12:00</p>
-<h3 class="font-bold">DESPERTAR REBELDE</h3>
+<div class="space-y-stack-md">
+<span class="font-label-caps text-label-caps text-[#C1121F] block">IDENTIDAD REBELDE</span>
+<h2 class="font-headline-lg text-headline-lg text-white uppercase">SONIDO PROPIO DESDE EL SUR</h2>
+<p class="font-body-lg text-body-lg text-on-surface">Programa de radio streaming enfocado en el rock nacional, la cultura y la identidad regional de Chubut. Rompemos el molde tradicional para dar voz a lo que pasa acá, en nuestras calles y nuestros escenarios.</p>
+<div class="pt-stack-sm">
+<button class="border-2 border-white px-8 py-3 font-label-caps text-label-caps text-white hover:bg-white hover:text-black transition-all">CONOCÉ AL EQUIPO</button>
 </div>
-
-<div class="border p-4 bg-white text-black">
-<p>20:00 - 22:00</p>
-<h3 class="font-bold">DADOS VUELTA</h3>
-</div>
-
-<div class="border p-4">
-<p>21:00 - 23:00</p>
-<h3 class="font-bold">CULTURA BEAT</h3>
-</div>
-
 </div>
 </section>
-
-<!-- CONTACTO -->
-<section class="p-6 bg-black">
-<h2 class="text-2xl mb-4">Contacto</h2>
-
-<form id="contactForm" class="space-y-4 max-w-md">
-<input id="name" type="text" placeholder="Nombre" class="w-full p-2 bg-transparent border-b border-white"/>
-<input id="email" type="email" placeholder="Email" class="w-full p-2 bg-transparent border-b border-white"/>
-<textarea id="message" placeholder="Mensaje" class="w-full p-2 bg-transparent border-b border-white"></textarea>
-
-<button type="submit" class="bg-white text-black px-4 py-2">Enviar</button>
-<p id="formMsg" class="text-green-400 hidden">Mensaje enviado ✔</p>
+<!-- Schedule Section -->
+<section class="py-stack-lg px-container-margin">
+<h2 class="font-display-xl text-headline-lg text-white uppercase mb-stack-lg text-center underline decoration-[#C1121F] decoration-8 underline-offset-8">PROGRAMACIÓN</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-0 border-2 border-white">
+<!-- Day Column -->
+<div class="border-r-2 border-b-2 md:border-b-0 border-white p-stack-sm flex flex-col min-h-[300px]">
+<h3 class="font-headline-md text-headline-md text-white mb-stack-md text-center border-b-2 border-white pb-2">LUN</h3>
+<div class="bg-[#C1121F] p-4 flex-1 mb-2">
+<span class="font-label-caps text-[10px] text-white opacity-80">10:00 - 12:00</span>
+<p class="font-['Epilogue'] font-extrabold text-white leading-tight mt-1">DESPERTAR REBELDE</p>
+</div>
+<div class="p-4 flex-1 border-t border-white/20">
+<span class="font-label-caps text-[10px] text-secondary">18:00 - 20:00</span>
+<p class="font-['Epilogue'] font-bold text-white leading-tight mt-1">FRECUENCIA LOCAL</p>
+</div>
+</div>
+<!-- Highlighted Day -->
+<div class="border-r-2 border-b-2 md:border-b-0 border-white p-stack-sm flex flex-col min-h-[300px] bg-white text-black">
+<h3 class="font-headline-md text-headline-md text-black mb-stack-md text-center border-b-2 border-black pb-2">MAR</h3>
+<div class="bg-black p-4 flex-1">
+<span class="font-label-caps text-[10px] text-white opacity-80">20:00 - 22:00</span>
+<p class="font-['Epilogue'] font-black text-[#C1121F] text-2xl leading-none mt-2">DADOS VUELTA</p>
+<p class="text-[10px] text-white uppercase font-bold mt-1">Central Show</p>
+</div>
+</div>
+<div class="border-r-2 border-b-2 md:border-b-0 border-white p-stack-sm flex flex-col min-h-[300px]">
+<h3 class="font-headline-md text-headline-md text-white mb-stack-md text-center border-b-2 border-white pb-2">MIE</h3>
+<div class="p-4 flex-1 border-b border-white/20">
+<span class="font-label-caps text-[10px] text-secondary">14:00 - 16:00</span>
+<p class="font-['Epilogue'] font-bold text-white leading-tight mt-1">EL ARCHIVO</p>
+</div>
+<div class="p-4 flex-1">
+<span class="font-label-caps text-[10px] text-secondary">21:00 - 23:00</span>
+<p class="font-['Epilogue'] font-bold text-white leading-tight mt-1">CULTURA BEAT</p>
+</div>
+</div>
+<div class="border-r-2 border-b-2 md:border-b-0 border-white p-stack-sm flex flex-col min-h-[300px]">
+<h3 class="font-headline-md text-headline-md text-white mb-stack-md text-center border-b-2 border-white pb-2">JUE</h3>
+<div class="bg-[#C1121F] p-4 flex-1">
+<span class="font-label-caps text-[10px] text-white opacity-80">19:00 - 21:00</span>
+<p class="font-['Epilogue'] font-extrabold text-white leading-tight mt-1">POGO VIRTUAL</p>
+</div>
+</div>
+<div class="p-stack-sm flex flex-col min-h-[300px]">
+<h3 class="font-headline-md text-headline-md text-white mb-stack-md text-center border-b-2 border-white pb-2">VIE</h3>
+<div class="bg-white text-black p-4 flex-1">
+<span class="font-label-caps text-[10px] font-black">22:00 - LATE</span>
+<p class="font-['Epilogue'] font-black text-black text-xl leading-tight mt-1">GARAGE SESSION</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Blog/Notes Section -->
+<section class="py-stack-lg px-container-margin border-t-2 border-white bg-[#0D0D0D]">
+<div class="flex justify-between items-end mb-stack-lg">
+<h2 class="font-headline-lg text-headline-lg text-white uppercase">BITÁCORA</h2>
+<a class="font-label-caps text-label-caps text-[#C1121F] underline hover:text-white" href="#">VER TODO</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+<!-- Blog Card 1 -->
+<article class="group border-2 border-white overflow-hidden bg-black">
+<div class="aspect-video overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="dramatic stage lighting at a rock concert with silhouettes of musicians and hazy smoke atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMXhzMe4xTqd2jGJGrAR74lDTHNmaFjhm4axj2MBPrSGZpGFqthyzRFxPLSIzC5MG0IUMKv0c3-ZeI3igK9xq9M4iKvwLYWgEIZPAZL4PQOBb756OJkEmFfMS3Tqqns43lVOK26vl3J5VGWzNgrAM84s3Mp6Dn_SXBtr6wVybCgY4hQeTsHJvfrrjDtnoyW5h80q-U_03sNIFiQEVCm61HmNXrCP-w3G1oO6UxGtFfNP9nOKHbsPrCopfvdqCDodkcnoX6-xDewoUQ"/>
+</div>
+<div class="p-stack-md">
+<span class="font-label-caps text-[10px] text-[#C1121F] border border-[#C1121F] px-2 py-1 mb-3 inline-block">ENTREVISTA</span>
+<h3 class="font-headline-md text-headline-md text-white group-hover:text-[#C1121F] transition-colors leading-tight mb-stack-sm">ESCENA LOCAL: EL RESURGIR DEL ROCK EN TRELEW</h3>
+<p class="font-body-md text-secondary mb-stack-md">Charlamos con los referentes de la nueva ola de bandas que están copando los escenarios del Valle.</p>
+<button class="bg-white text-black font-label-caps text-[10px] px-4 py-2 hover:bg-[#C1121F] hover:text-white transition-colors">LEER MÁS</button>
+</div>
+</article>
+<!-- Blog Card 2 -->
+<article class="group border-2 border-white overflow-hidden bg-black">
+<div class="aspect-video overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="close up of a row of vintage vinyl records in a dusty crate with dramatic shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMTVQpqJ6IApYIwSNKpCCrmgG18Xcw94BtSLCttoZh0ADEf4aOpUe2uJXvSDYGm7SwYbM0l--mu0WToCB8NyMZbdps6Hu0BarQVAo3p4g1alCOSmPobwT4l0cnp1149djGNR8eI9cIKru3YGRoUbCPIY9OyAEMLmH-KJSQoszT20XbXyBQuyisWnR7rF8N06XUJA2Z9_qm5F9ViKa__cMuA3pR3CcSDdhwz2gSRxYAdq6q29sAfF0a87rH5KHcBlJhbx3W0UzthNt8"/>
+</div>
+<div class="p-stack-md">
+<span class="font-label-caps text-[10px] text-[#C1121F] border border-[#C1121F] px-2 py-1 mb-3 inline-block">CULTURA</span>
+<h3 class="font-headline-md text-headline-md text-white group-hover:text-[#C1121F] transition-colors leading-tight mb-stack-sm">VINILOS Y MEMORIA: COLECCIONISMO EN CHUBUT</h3>
+<p class="font-body-md text-secondary mb-stack-md">Un recorrido por las ferias y colecciones privadas más importantes de nuestra región.</p>
+<button class="bg-white text-black font-label-caps text-[10px] px-4 py-2 hover:bg-[#C1121F] hover:text-white transition-colors">LEER MÁS</button>
+</div>
+</article>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-stack-lg px-container-margin bg-black flex flex-col md:flex-row gap-stack-lg">
+<div class="md:w-1/3">
+<h2 class="font-display-xl text-headline-lg text-white uppercase mb-stack-sm">CONTACTO</h2>
+<p class="font-body-lg text-secondary mb-stack-md">¿Tenés una banda? ¿Querés difundir un evento cultural? Escribinos y activá el aire.</p>
+<a class="inline-flex items-center gap-4 bg-[#25D366] text-black px-6 py-4 font-label-caps text-label-caps hover:bg-white transition-all w-full md:w-auto" href="#">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+                    WHATSAPP DIRECTO
+                </a>
+</div>
+<div class="md:w-2/3">
+<form class="space-y-stack-md bg-[#0D0D0D] p-stack-md border-2 border-white">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<div class="border-b-2 border-white focus-within:border-[#C1121F] transition-all">
+<label class="font-label-caps text-[10px] text-secondary uppercase">Nombre</label>
+<input class="bg-transparent border-none w-full text-white focus:ring-0 p-2 font-body-md" placeholder="Tu nombre..." type="text"/>
+</div>
+<div class="border-b-2 border-white focus-within:border-[#C1121F] transition-all">
+<label class="font-label-caps text-[10px] text-secondary uppercase">Email</label>
+<input class="bg-transparent border-none w-full text-white focus:ring-0 p-2 font-body-md" placeholder="tu@email.com" type="email"/>
+</div>
+</div>
+<div class="border-b-2 border-white focus-within:border-[#C1121F] transition-all">
+<label class="font-label-caps text-[10px] text-secondary uppercase">Mensaje</label>
+<textarea class="bg-transparent border-none w-full text-white focus:ring-0 p-2 font-body-md h-32 resize-none" placeholder="¿Qué tenés para decir?"></textarea>
+</div>
+<button class="w-full bg-white text-black font-headline-md text-label-caps py-4 hover:bg-[#C1121F] hover:text-white transition-all uppercase tracking-[0.2em]" type="submit">Enviar Mensaje</button>
 </form>
+</div>
 </section>
-
-<script>
-// PLAYER
-const player = document.getElementById("radioPlayer");
-const playBtn = document.getElementById("playBtn");
-const navPlay = document.getElementById("navPlay");
-const icon = document.getElementById("playIcon");
-const status = document.getElementById("liveStatus");
-const dot = document.getElementById("liveDot");
-const volume = document.getElementById("volumeControl");
-
-function togglePlay(){
-    if(player.paused){
-        player.play();
-    } else {
-        player.pause();
-    }
-}
-
-playBtn.onclick = togglePlay;
-navPlay.onclick = togglePlay;
-
-player.addEventListener("play", ()=>{
-    icon.textContent = "pause";
-    status.textContent = "EN VIVO";
-    status.classList.remove("text-gray-400");
-    status.classList.add("text-[#C1121F]");
-    dot.classList.remove("bg-gray-500");
-    dot.classList.add("bg-[#C1121F]");
-});
-
-player.addEventListener("pause", ()=>{
-    icon.textContent = "play_arrow";
-    status.textContent = "OFFLINE";
-    status.classList.add("text-gray-400");
-    status.classList.remove("text-[#C1121F]");
-    dot.classList.add("bg-gray-500");
-    dot.classList.remove("bg-[#C1121F]");
-});
-
-volume.addEventListener("input", e=>{
-    player.volume = e.target.value;
-});
-
-// FORM
-const form = document.getElementById("contactForm");
-const msg = document.getElementById("formMsg");
-
-form.addEventListener("submit", (e)=>{
-    e.preventDefault();
-
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = document.getElementById("message").value.trim();
-
-    if(!name || !email || !message){
-        alert("Completá todos los campos");
-        return;
-    }
-
-    if(!email.includes("@")){
-        alert("Email inválido");
-        return;
-    }
-
-    msg.classList.remove("hidden");
-    form.reset();
-});
-</script>
-
-</body>
-</html>
+</main>
+<!-- Footer -->
+<footer class="bg-black dark:bg-black full-width border-t-2 border-white flex flex-col md:flex-row justify-between items-center w-full px-8 py-12 gap-6 relative z-10 mb-16 md:mb-0">
+<div class="flex flex-col items-center md:items-start gap-2">
+<div class="text-lg font-black text-white font-['Epilogue'] uppercase italic tracking-widest">DADOS VUELTA</div>
+<p class="font-['Epilogue'] text-xs font-bold uppercase tracking-widest text-[#C1121F]">© DADOS VUELTA RADIO. EST. 2024. GARAGE-TO-GALLERY AESTHETIC.</p>
+</div>
+<div class="flex gap-stack-md">
+<a class="font-['Epilogue'] text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-white underline" href="#">Instagram</a>
+<a class="font-['Epilogue'] text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-white underline" href="#">YouTube</a>
+<a class="font-['Epilogue'] text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-white underline" href="#">Spotify</a>
+<a class="font-['Epilogue'] text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-white underline" href="#">Privacy Policy</a>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-[100] flex justify-around items-stretch h-16 bg-black border-t-2 border-white">
+<a class="flex flex-col items-center justify-center bg-[#C1121F] text-white p-2 flex-1" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Epilogue'] font-bold text-[10px] uppercase">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-white p-2 flex-1" href="#">
+<span class="material-symbols-outlined" data-icon="sensors">sensors</span>
+<span class="font-['Epilogue'] font-bold text-[10px] uppercase">Vivo</span>
+</a>
+<a class="flex flex-col items-center justify-center text-white p-2 flex-1" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-['Epilogue'] font-bold text-[10px] uppercase">Programas</span>
+</a>
+<a class="flex flex-col items-center justify-center text-white p-2 flex-1" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-['Epilogue'] font-bold text-[10px] uppercase">Nosotros</span>
+</a>
+<a class="flex flex-col items-center justify-center text-white p-2 flex-1" href="#">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+<span class="font-['Epilogue'] font-bold text-[10px] uppercase">Contacto</span>
+</a>
+</nav>
+<style>
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: inline-block;
+            animation: marquee 30s linear infinite;
+        }
+    </style>
+</body></html>
